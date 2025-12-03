@@ -17,23 +17,32 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <button class="menu-toggle" id="menu-button" aria-expanded="false" aria-label="Toggle navigation">
+                    ☰
+                </button>
             </nav>
         </div>
     </header>
 
     <main class="container">
         <section id="about" class="about-section">
-            <div class="profile-card">
-                <img src="images/me.jpg" alt="Your Profile Picture" class="profile-pic">
-                <div class="profile-info">
-                    <h2>About Me</h2>
-                    <p class="tagline">Passionate Coder | Innovator | Problem Solver</p>
-                    <p>I’m a second-year Computer Science student majoring in Artificial Intelligence, passionate about building intelligent systems that solve real-world problems. I enjoy working on machine learning projects, exploring how data and algorithms can create smarter, more efficient solutions.
+            <video autoplay muted loop id="about-video-bg">
+                <source src="videos/vdo.mp4" type="video/mp4">
+            </video>
+            
+            <div class="about-content-wrapper">
+                <div class="profile-card">
+                    <img src="images/me.jpg" alt="Your Profile Picture" class="profile-pic">
+                    <div class="profile-info">
+                        <h2>About Me</h2>
+                        <p class="tagline">Passionate Coder | Innovator | Problem Solver</p>
+                        <p>I’m a second-year Computer Science student majoring in Artificial Intelligence, passionate about building intelligent systems that solve real-world problems. I enjoy working on machine learning projects, exploring how data and algorithms can create smarter, more efficient solutions.
 
-                    Currently, I’m focused on strengthening my skills in programming, model development, and AI research while working on projects that challenge me to learn and grow. My goal is to become an AI engineer capable of designing impactful, user-centered technologies.
+                        Currently, I’m focused on strengthening my skills in programming, model development, and AI research while working on projects that challenge me to learn and grow. My goal is to become an AI engineer capable of designing impactful, user-centered technologies.
 
-                    I’m always open to new opportunities, collaborations, and learning experiences that push my technical and creative boundaries.
-                    </p>
+                        I’m always open to new opportunities, collaborations, and learning experiences that push my technical and creative boundaries.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -52,7 +61,7 @@
 
         <section id="contact" class="contact-section">
             <h2>Contact Me</h2>
-            <form action="#" method="POST" class="contact-form">
+            <form action="#" method="POST" class="contact-form" id="contact-form">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -67,7 +76,7 @@
                 </div>
                 <button type="submit" class="btn submit-btn">Send Message</button>
             </form>
-        </section>
+            </section>
     </main>
 
     <footer class="main-footer">
@@ -75,6 +84,8 @@
             <p>&copy; 2025 Glisten Maharjan | All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>

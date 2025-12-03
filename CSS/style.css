@@ -121,6 +121,11 @@ a:hover {
     font-size: 2.2rem;
 }
 
+.main-nav {
+    display: flex; /* Flexbox for nav area to place ul and toggle button */
+    align-items: center;
+}
+
 .main-nav ul {
     list-style: none;
     display: flex;
@@ -152,6 +157,21 @@ a:hover {
     width: 100%;
 }
 
+/* --- MOBILE MENU TOGGLE STYLES ADDED --- */
+
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 20px; 
+}
+
+/* --- END OF MOBILE MENU TOGGLE STYLES --- */
+
 
 main .container {
     padding-top: 40px;
@@ -169,6 +189,11 @@ section {
 
 .about-section {
     text-align: center;
+    /* Required for video background */
+    position: relative; 
+    overflow: hidden;
+    background-color: transparent; /* Override original white background */
+    box-shadow: none; /* Remove box shadow for a cleaner look */
 }
 
 .profile-card {
@@ -262,6 +287,12 @@ section {
     text-align: left;
 }
 
+#form-message {
+    margin-top: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -317,6 +348,57 @@ section {
     margin: 0;
 }
 
+/* --- VIDEO BACKGROUND STYLES --- */
+
+#about-video-bg {
+    /* Positioning and Sizing */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    /* Center the video */
+    transform: translateX(-50%) translateY(-50%);
+    /* Ensure the video is always behind the content */
+    z-index: 0;
+    /* Keep aspect ratio and crop if necessary */
+    object-fit: cover;
+}
+
+.about-content-wrapper {
+    /* Ensures content is above the video */
+    position: relative;
+    z-index: 1;
+    /* Semi-transparent dark overlay for text readability */
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 30px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Add shadow to content wrapper for depth */
+}
+
+/* Adjust colors of elements inside the content wrapper for contrast */
+.about-content-wrapper h2, 
+.about-content-wrapper .tagline,
+.about-content-wrapper p,
+.about-content-wrapper a {
+    color: var(--white-color); 
+}
+
+/* Ensure the H2 underline is visible and styled correctly */
+.about-content-wrapper h2::after {
+    background-color: var(--primary-color); 
+}
+
+/* Ensure the profile card layout is maintained (already flex in original) */
+.about-content-wrapper .profile-card {
+    align-items: center; 
+}
+
+
+/* --- MEDIA QUERIES --- */
+
 @media (max-width: 768px) {
     h1 {
         font-size: 2.2rem;
@@ -324,20 +406,44 @@ section {
     h2 {
         font-size: 1.8rem;
     }
+    
+    /* MODIFIED: Changed main-header to display h1 and button side-by-side */
     .main-header .container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row; /* Keep elements horizontal */
+        justify-content: space-between; /* Space out h1 and nav */
     }
+
     .main-header h1 {
-        margin-bottom: 15px;
+        margin-bottom: 0;
     }
+
+    .main-nav {
+        flex-direction: column; /* Allows navigation to stack */
+        align-items: flex-end; /* Align items to the right */
+    }
+
+    /* MOBILE MENU BEHAVIOR */
     .main-nav ul {
-        justify-content: center;
-        flex-wrap: wrap;
+        display: none; /* Hide navigation links by default */
+        flex-direction: column;
+        width: 100%;
+        text-align: right;
+        margin-top: 15px;
     }
+
+    .main-nav ul.open {
+        display: flex; /* Show links when 'open' class is added by JS */
+    }
+
     .main-nav ul li {
-        margin: 0 10px 10px 10px;
+        margin: 5px 0 5px 25px;
     }
+
+    .menu-toggle {
+        display: block; /* Show the button on mobile */
+    }
+    /* END MOBILE MENU BEHAVIOR */
+
 
     .profile-card {
         flex-direction: column;
@@ -367,7 +473,7 @@ section {
         width: 95%;
     }
     .main-nav ul li {
-        margin: 0 5px 10px 5px;
+        margin: 5px 0 5px 15px;
     }
     .project-grid {
         grid-template-columns: 1fr;
